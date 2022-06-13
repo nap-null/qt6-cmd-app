@@ -10,17 +10,17 @@ conan_basic_setup(KEEP_RPATHS)
 
 find_package(
     Qt6
-    COMPONENTS
-        Core
+        COMPONENTS
+            Core
 )
 
 set(SOURCES main.cpp)
 
-add_executable(qt6-cmd-app ${SOURCES})
+add_executable(${PROJECT_NAME} ${SOURCES})
 
-target_link_libraries(qt6-cmd-app Qt6::Core)
+target_link_libraries(${PROJECT_NAME} Qt6::Core)
 
 if(APPLE)
-    target_link_libraries(qt6-cmd-app "-framework SystemConfiguration")
-    target_link_libraries(qt6-cmd-app "-framework GSS")
+    target_link_libraries(${PROJECT_NAME} "-framework SystemConfiguration")
+    target_link_libraries(${PROJECT_NAME} "-framework GSS")
 endif()
