@@ -1,7 +1,12 @@
 cmake_minimum_required(VERSION 3.17)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_BINARY_DIR})
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
 
 project(qt6-cmd-app LANGUAGES CXX)
 
@@ -14,11 +19,20 @@ find_package(
             Core
 )
 
-set(SOURCES main.cpp)
+file(GLOB_RECURSE SOURCES src/*.cpp src/*.h)
 
-add_executable(${PROJECT_NAME} ${SOURCES})
+add_executable(${PROJECT_NAME} main.cpp ${SOURCES})
 
-target_link_libraries(${PROJECT_NAME} Qt6::Core)
+target_include_directories(
+    ${PROJECT_NAME}
+        PRIVATE
+            src
+)
+
+target_link_libraries(
+    ${PROJECT_NAME}
+        Qt::Core
+)
 
 if(APPLE)
     target_link_libraries(${PROJECT_NAME} "-framework SystemConfiguration")

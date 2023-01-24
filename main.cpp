@@ -1,12 +1,12 @@
-#include <QtCore/QtCore>
+#include <QTimer>
+
+#include <Application/Application.h>
+
 
 int main(int argc, char* argv[]) {
-	QStringList args;
+    cmd_app::Application app(argc, argv);
 
-	for(int i = 0; i < argc; i++)
-		args << argv[i];
+    QTimer::singleShot(0, &app, &cmd_app::Application::run);
 
-	qDebug() << args;
-
-	return 0;
+    return app.exec();
 }

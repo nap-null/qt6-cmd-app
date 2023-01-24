@@ -6,14 +6,14 @@ assert conan_version >= tools.Version('1.35'), 'Conan version is too old.'
 class Qt6CmdAppConan(ConanFile):
     name = 'qt6-cmd-app'
     version = '0.0.0'
-    generators = 'cmake', 'cmake_find_package'
+    generators = 'cmake'
 
     exports_sources = (
         'CMakeLists.txt',
         'main.cpp',
     )
 
-    requires = 'qt/6.3.0@nap/devel'
+    requires = 'qt/6.4.0@nap/devel'
 
     def build(self):
         build_env = RunEnvironment(self)
