@@ -1,6 +1,6 @@
 from conans import ConanFile, CMake, RunEnvironment, tools, __version__ as conan_version
 
-assert conan_version >= tools.Version('1.35'), 'Conan version is too old.'
+assert conan_version >= tools.Version('1.60.0'), 'Conan version is too old.'
 
 
 class Qt6CmdAppConan(ConanFile):
@@ -13,7 +13,7 @@ class Qt6CmdAppConan(ConanFile):
         'main.cpp',
     )
 
-    requires = 'qt/6.4.0@nap/devel'
+    requires = 'qt/6.5.0@nap/devel'
 
     def build(self):
         build_env = RunEnvironment(self)
