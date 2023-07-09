@@ -3,9 +3,6 @@
 #include <QCoreApplication>
 
 
-namespace cmd_app
-{
-
 class Application : public QCoreApplication
 {
     Q_OBJECT
@@ -13,19 +10,12 @@ class Application : public QCoreApplication
 public:
     explicit Application(int& argc, char** argv);
 
-    void init();
-    void quit();
-
 signals:
     void finished();
 
-public slots:
-    void run();
-
 public:
+    void init();
+    void run();
+    void quit();
     void aboutToQuitApp();
 };
-
-#define pApp ((Application*)qApp)
-
-}

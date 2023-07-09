@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="QmlSettings">
+    <option name="myCurrentProfile" value="Release" />
+    <option name="mySettingsPerProfile">
+      <map>
+        <entry key="Release">
+          <value>
+            <PerProfileState>
+              <option name="myQmlPath" value="$USER_HOME$/.conan/data/qt/6.5.0/nap/devel/package/a236f81257d30ab7e0569c52cd50928aa0f29852/./qml" />
+              <option name="myQtBinPath" value="$USER_HOME$/.conan/data/qt/6.5.0/nap/devel/package/a236f81257d30ab7e0569c52cd50928aa0f29852/bin" />
+            </PerProfileState>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
