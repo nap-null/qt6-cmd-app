@@ -7,7 +7,7 @@
 Application::Application(int& argc, char** argv)
   : QCoreApplication(argc, argv)
 {
-    QTimer::singleShot(0, &app, &Application::run);
+    QTimer::singleShot(0, this, &Application::run);
 }
 
 void Application::init() {

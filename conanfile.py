@@ -1,4 +1,4 @@
-from conans import ConanFile, CMake, RunEnvironment, tools, __version__ as conan_version
+from conans import ConanFile, CMake, tools, __version__ as conan_version
 
 assert conan_version >= tools.Version('1.60.0'), 'Conan version is too old.'
 
@@ -8,17 +8,23 @@ class Qt6CmdAppConan(ConanFile):
     version = '0.0.0'
     generators = 'cmake'
 
+    settings = "os", "arch", "compiler", "build_type"
+    options = {
+        'shared': [True, False],
+    }
+    default_options = {
+        'shared': True,
+    }
+
     exports_sources = (
         'CMakeLists.txt',
         'main.cpp',
     )
 
-    requires = 'qt/6.5.0@nap/devel'
+    requires = 'qt/6.4.0@nap/devel'
 
     def build(self):
-        build_env = RunEnvironment(self)
-        with tools.environment_append(build_env.vars):
-            self.cmake.build()
+        self.cmake.build()
 
     def package(self):
         self.cmake.install()
@@ -26,6 +32,5 @@ class Qt6CmdAppConan(ConanFile):
     @property
     def cmake(self):
         cmake = CMake(self, generator='Ninja', set_cmake_flags=True)
-        cmake.definitions['USE_CONAN'] = True
         cmake.configure()
         return cmake
